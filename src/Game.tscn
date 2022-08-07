@@ -646,4 +646,3 @@ tile_data = PoolIntArray( -393221, 17, 0, -393220, 17, 0, -393219, 17, 0, -39321
 
 [node name="BABY" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 48.5, -10 )
-scale = Vector2( 0.5, 0.5 )

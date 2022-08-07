@@ -1,28 +1,73 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/Baby/placeholder.png" type="Texture" id=1]
+[ext_resource path="res://assets/Baby/Catto/black_003.png" type="Texture" id=1]
 [ext_resource path="res://BABY.gd" type="Script" id=2]
-[ext_resource path="res://assets/Baby/eye.png" type="Texture" id=3]
-[ext_resource path="res://assets/Baby/light.png" type="Texture" id=4]
-
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
+[ext_resource path="res://assets/Baby/Placeholder/light.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 12, 9 )
+extents = Vector2( 7, 2.5 )
 
-[sub_resource type="SpriteFrames" id=3]
-animations = [ {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
+[sub_resource type="Animation" id=5]
+resource_name = "Idle"
+length = 5.0
+loop = true
+step = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 1.2, 1.8, 2.4, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "W_Right"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 36, 37, 38, 39 ]
+}
 
 [node name="BABY" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -30,49 +75,29 @@ script = ExtResource( 2 )
 [node name="EYEOFSAURON" type="Camera2D" parent="."]
 current = true
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 3, 6 )
+position = Vector2( -1, 6.5 )
 shape = SubResource( 2 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
 
-[node name="eyes" type="Node2D" parent="."]
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 4
+vframes = 21
 
-[node name="left" type="AnimatedSprite" parent="eyes"]
-position = Vector2( -3, -2 )
-frames = SubResource( 3 )
-__meta__ = {
-"_edit_group_": true
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Idle = SubResource( 5 )
+anims/RESET = SubResource( 6 )
+anims/W_Right = SubResource( 7 )
 
-[node name="light" type="Light2D" parent="eyes/left"]
+[node name="eyes" type="Light2D" parent="."]
+position = Vector2( 0, -2 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 4 )
-color = Color( 0.0313726, 1, 0, 1 )
-shadow_enabled = true
-
-[node name="right" type="AnimatedSprite" parent="eyes"]
-position = Vector2( 9, -2 )
-frames = SubResource( 3 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
-
-[node name="light" type="Light2D" parent="eyes/right"]
-scale = Vector2( 3, 3 )
-texture = ExtResource( 4 )
+texture_scale = 0.5
 color = Color( 0.0313726, 1, 0, 1 )
 shadow_enabled = true
 __meta__ = {

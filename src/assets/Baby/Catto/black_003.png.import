@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tilemap.png-f3c458f64c9c7f0313153a9886a79f91.stex"
+path="res://.import/black_003.png-69bd34a98d0d802577b19418518488aa.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Baby/tilemap.png"
-dest_files=[ "res://.import/tilemap.png-f3c458f64c9c7f0313153a9886a79f91.stex" ]
+source_file="res://assets/Baby/Catto/black_003.png"
+dest_files=[ "res://.import/black_003.png-69bd34a98d0d802577b19418518488aa.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

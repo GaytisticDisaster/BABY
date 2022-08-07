@@ -7,6 +7,9 @@ var velocity = Vector2.ZERO
 var eye_closed = false
 
 onready var eyes = $eyes
+onready var baby = $Sprite
+
+onready var _animation_player = $AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,21 +34,49 @@ func movement_input():
 		velocity.y += 1
 	if Input.is_action_pressed("up"):
 		velocity.y -= 1
+	
+	if velocity == Vector2(0,0):
+		#IDLE -> start idle timer
+		pass
+	if velocity == Vector2(1,0):
+		#Right
+		_animation_player.play("W_Right")
+		pass
+	if velocity == Vector2(-1,0):
+		#Left
+		pass
+	if velocity == Vector2(0,1):
+		#Down
+		pass
+	if velocity == Vector2(0,-1):
+		#Up
+		pass
+	if velocity == Vector2(1,1):
+		#Down_Right
+		pass
+	if velocity == Vector2(1,-1):
+		#Up_Right
+		pass
+	if velocity == Vector2(-1,1):
+		#Down_Left
+		pass
+	if velocity == Vector2(-1,-1):
+		#Down_Right
+		pass
+			
+	
+	
 			
 	velocity = velocity.normalized() * speed
+	
 
 func blink_input():
 	
-	var left_eye = eyes.get_node("left")
-	var right_eye = eyes.get_node("right")
-	#var left_light = left_eye.get_node("light")
 	
 	if Input.is_action_pressed("blink"):
 		eye_closed = true
 		
-		
 	else:
 		eye_closed = false
 		
-	left_eye.visible = !eye_closed
-	right_eye.visible = !eye_closed
+	eyes.enabled = !eye_closed

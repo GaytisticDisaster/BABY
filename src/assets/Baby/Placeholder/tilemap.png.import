@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/light.png-1121b5c14d4be0e67742887b13152829.stex"
+path="res://.import/tilemap.png-857523e3980ba726d11a54fbac7c8bfd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Baby/light.png"
-dest_files=[ "res://.import/light.png-1121b5c14d4be0e67742887b13152829.stex" ]
+source_file="res://assets/Baby/Placeholder/tilemap.png"
+dest_files=[ "res://.import/tilemap.png-857523e3980ba726d11a54fbac7c8bfd.stex" ]
 
 [params]
 
