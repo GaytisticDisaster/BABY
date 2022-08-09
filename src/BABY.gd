@@ -40,10 +40,15 @@ func go_idle():
 	
 	
 func movement_input():
+	"""
+	Handles all movement related input.
+	"""
 	velocity = Vector2.ZERO
 
-	print(idle_timer.time_left)
+	# TODO: Remove debug print
+	print("Idle timer: %ss" % idle_timer.time_left)
 	
+	# Changes velocity based on movement
 	if Input.is_action_pressed("right"):
 		velocity.x += 1
 		dir = 1
@@ -55,6 +60,28 @@ func movement_input():
 	if Input.is_action_pressed("up"):
 		velocity.y -= 1
 	
+	# Based on the new, input based velocity,
+	# select the appropriate animation
+	select_velocity_based_animation()
+				
+	if eye_closed:
+		animation_str = animation_str + "_Closed"	
+	else:
+		animation_str.trim_suffix("_Closed")
+		
+	
+	#print(animation_str)
+	if animation_str and !full_idle:
+		_animation_player.play(animation_str)
+
+	velocity = velocity.normalized() * speed
+	
+
+func select_velocity_based_animation():
+	"""
+	Selects $BABY's animation based on the current velocity.
+	This is what 
+	"""
 	if velocity == Vector2(0,0):
 		#IDLE -> start idle timer
 		animation_str = "Sit"
@@ -64,6 +91,9 @@ func movement_input():
 		else:
 			baby.flip_h = false
 			
+		# If $BABY is not moving then start the idle timer
+		# When the timer is done then $BABY will enter 
+		# the idle animation
 		if !is_idle:
 			idle_timer.start()
 			_animation_player.stop(false)
@@ -78,46 +108,38 @@ func movement_input():
 		if full_idle:
 			full_idle = false
 			open_eyes()
-	
+	# Right
 	if velocity == Vector2(1,0):
-		#Right
 		animation_str = "W_Right"
+		
+	# Left	
 	if velocity == Vector2(-1,0):
-		#Left
-
 		animation_str = "W_Left"
+		
+	# Down		
 	if velocity == Vector2(0,1):
-		#Down
 		animation_str = "W_Down"
+		
+	# Up
 	if velocity == Vector2(0,-1):
-		#Up
 		animation_str = "W_Up"
+		
+	# Down_Right
 	if velocity == Vector2(1,1):
-		#Down_Right
 		animation_str = "W_Down_Right"
+	
+	# Up_Right
 	if velocity == Vector2(1,-1):
-		#Up_Right
 		animation_str = "W_Up_Right"
+		
+	# Down_Left
 	if velocity == Vector2(-1,1):
-		#Down_Left
 		animation_str = "W_Down_Left"
+		
+	# Up_Left
 	if velocity == Vector2(-1,-1):
-		#Up_Left
 		animation_str = "W_Up_Left"
-			
-	if eye_closed:
-		animation_str = animation_str + "_Closed"	
 
-	else:
-		if "_Closed" in animation_str:
-			animation_str.erase(animation_str.length() - 1, 7)
-	
-	#print(animation_str)
-	if animation_str and !full_idle:
-		_animation_player.play(animation_str)
-
-	velocity = velocity.normalized() * speed
-	
 
 func close_eyes():
 	eye_closed_override = true
