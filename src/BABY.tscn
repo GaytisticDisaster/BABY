@@ -37,6 +37,18 @@ tracks/1/keys = {
 "method": "close_eyes"
 } ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("eyes:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -7, -5 ), Vector2( -7, -5 ) ]
+}
 
 [sub_resource type="Animation" id=6]
 length = 0.001
@@ -324,6 +336,7 @@ script = ExtResource( 2 )
 
 [node name="EYEOFSAURON" type="Camera2D" parent="."]
 current = true
+zoom = Vector2( 0.4, 0.4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -1, 6.5 )
@@ -358,15 +371,12 @@ anims/W_Up_Left = SubResource( 13 )
 anims/W_Up_Right = SubResource( 14 )
 
 [node name="eyes" type="Light2D" parent="."]
-position = Vector2( 0, -2 )
+position = Vector2( -8, -4 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 4 )
 texture_scale = 0.5
 color = Color( 0.0313726, 1, 0, 1 )
 shadow_enabled = true
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="IdleTimer" type="Timer" parent="."]
 wait_time = 2.0

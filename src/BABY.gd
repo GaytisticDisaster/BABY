@@ -68,7 +68,6 @@ func movement_input():
 		animation_str = animation_str + "_Closed"	
 	else:
 		animation_str.trim_suffix("_Closed")
-		
 	
 	#print(animation_str)
 	if animation_str and !full_idle:
