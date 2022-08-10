@@ -14,9 +14,8 @@ var full_idle = false
 var animation_str = "Sit"
 var dir = 1
 
-
-onready var eyes = $eyes
 onready var baby = $Sprite
+onready var eyes = $Sprite/eyes
 
 onready	var idle_timer = $IdleTimer
 onready var _animation_player = $AnimationPlayer
@@ -46,7 +45,7 @@ func movement_input():
 	velocity = Vector2.ZERO
 
 	# TODO: Remove debug print
-	print("Idle timer: %ss" % idle_timer.time_left)
+	#print("Idle timer: %ss" % idle_timer.time_left)
 	
 	# Changes velocity based on movement
 	if Input.is_action_pressed("right"):
@@ -86,9 +85,9 @@ func select_velocity_based_animation():
 		animation_str = "Sit"
 		
 		if dir == 1:
-			baby.flip_h = true
+			baby.scale = Vector2(-1,1)
 		else:
-			baby.flip_h = false
+			baby.scale = Vector2(1,1)
 			
 		# If $BABY is not moving then start the idle timer
 		# When the timer is done then $BABY will enter 
@@ -99,7 +98,7 @@ func select_velocity_based_animation():
 			
 		is_idle = true
 	else:
-		baby.flip_h = false
+		baby.scale = Vector2(1,1)
 		
 		is_idle = false
 		idle_timer.stop()
