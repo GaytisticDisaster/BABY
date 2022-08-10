@@ -44,9 +44,6 @@ func movement_input():
 	"""
 	velocity = Vector2.ZERO
 
-	# TODO: Remove debug print
-	#print("Idle timer: %ss" % idle_timer.time_left)
-	
 	# Changes velocity based on movement
 	if Input.is_action_pressed("right"):
 		velocity.x += 1
@@ -158,4 +155,4 @@ func eye_control():
 	if eye_closed_override:
 		eye_closed = true
 	
-	eyes.enabled = !eye_closed
+	eyes.energy = !eye_closed
