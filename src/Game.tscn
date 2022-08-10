@@ -330,7 +330,7 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 19/z_index = 0
 
 [sub_resource type="OccluderPolygon2D" id=16]
-polygon = PoolVector2Array( 2.52163, 27.8061, 3.00615, 27.9676, 13.827, 27.6446, 14.6345, 33.1358, 10.9199, 35.8814, 4.29819, 36.0429, 1.06808, 32.1668 )
+polygon = PoolVector2Array( 2.44507, 30.358, 5.13683, 32.8255, 10.6325, 33.4984, 13.4364, 30.6945 )
 
 [sub_resource type="ConvexPolygonShape2D" id=15]
 points = PoolVector2Array( 2.36012, 29.7442, 7.5283, 28.7752, 13.3425, 29.9057, 14.7961, 32.8128, 11.5659, 35.5584, 4.94421, 35.5584, 2.03711, 32.8128 )
@@ -352,7 +352,7 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 12.4195, 16, 12.4195 )
 0/texture = ExtResource( 2 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 80, 80, 16, 48 )
+0/region = Rect2( 80, 80, 16, 37 )
 0/tile_mode = 0
 0/occluder_offset = Vector2( 0, 0 )
 0/occluder = SubResource( 16 )
@@ -642,6 +642,7 @@ tile_data = PoolIntArray( -458748, 18, 0, -262149, 0, 0, -262148, 0, 0, -262147,
 tile_set = SubResource( 11 )
 cell_size = Vector2( 16, 16 )
 cell_tile_origin = 2
+cell_y_sort = true
 show_collision = true
 centered_textures = true
 format = 1
