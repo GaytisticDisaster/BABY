@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://BABY.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tiles/0x72_DungeonTilesetII_v1.4.png" type="Texture" id=2]
+[ext_resource path="res://Game.gd" type="Script" id=3]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -627,6 +628,7 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 12.4195, 16, 12.4195 )
 
 [node name="Game" type="Node2D"]
 scale = Vector2( 2, 2 )
+script = ExtResource( 3 )
 
 [node name="Floor" type="TileMap" parent="."]
 position = Vector2( 0, 1 )
